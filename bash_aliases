@@ -8,4 +8,6 @@ alias myip="curl http://ipecho.net/plain; echo"
 # Git aliases
 alias gpush="git push origin master"
 alias ga="git add ."
-alias gc=""
+gc() {
+    git commit -m "$1"
+}
