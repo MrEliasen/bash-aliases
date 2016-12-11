@@ -1,3 +1,5 @@
+# Use at your own risk
+
 # Utility aliases
 alias lsa="ls -lA"
 alias cd..="cd .."
