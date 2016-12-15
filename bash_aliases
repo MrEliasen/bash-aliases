@@ -12,8 +12,15 @@ alias temp="macstats" # Needs: npm i macstats -g
 # Git aliases
 alias gpush="git push origin master"
 alias ga="git add ."
+gadd() {
+    git remote add origin $1
+}
 gc() {
     git commit -m "$1"
+}
+# will loop all first level directories, ga, gc and gpush in them all.
+pushall() {
+    for dir in ./*; do (cd "$dir" && ga && gc "$1" && gpush); done
 }
 
 # Apache & PHP
