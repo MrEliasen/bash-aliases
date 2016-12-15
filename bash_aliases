@@ -4,6 +4,7 @@
 alias lsa="ls -lA"
 alias cd..="cd .."
 alias o-hosts="sudo vim /etc/hosts"
+alias htop="sudo htop"
 
 # Helpful bits
 alias myip="curl http://ipecho.net/plain; echo"

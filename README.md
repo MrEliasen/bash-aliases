@@ -3,7 +3,7 @@
 #### Install
 
 Please use these at your own risk. Never blindly trust and install any of the aliases, and please look through them all and make sure you are happy with them.   
-Alternatively, just copy across the once you want and leave out the rest (Recommended!).
+Alternatively, just copy across the ones you want and leave out the rest (Recommended!).
 
  * Clone locally
  * ``` $ bash setup.sh```
