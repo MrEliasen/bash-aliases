@@ -4,7 +4,7 @@
 alias lsa="ls -lA"
 alias cd..="cd .."
 alias o-hosts="sudo vim /etc/hosts"
-alias htop="sudo htop"
+alias shtop="sudo htop"
 
 # Helpful bits
 alias myip="curl http://ipecho.net/plain; echo"
@@ -16,11 +16,11 @@ alias ga="git add ."
 gadd() {
     git remote add origin $1
 }
-gc() {
+gc () {
     git commit -m "$1"
 }
 # will loop all first level directories, ga, gc and gpush in them all.
-pushall() {
+pushall () {
     for dir in ./*; do (cd "$dir" && ga && gc "$1" && gpush); done
 }
 
@@ -32,3 +32,7 @@ alias a-rs="sudo apachectl restart"
 alias a-sp="sudo apachectl stop"
 alias a-st="sudo apachectl start"
 alias a-ct="sudo apachectl configtest"
+# If you want a bit more control
+apache () {
+    sudo apachectl $1
+}
