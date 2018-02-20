@@ -8,19 +8,24 @@ alias shtop="sudo htop"
 
 # Helpful bits
 alias myip="curl http://ipecho.net/plain; echo"
+alias mylocalip="ipconfig getifaddr en0"
 alias temp="macstats" # Needs: npm i macstats -g
 
 # Git aliases
-alias gpush="git push origin master"
 alias ga="git add ."
-gadd() {
-    git remote add origin $1
+gpush () {
+    BRANCH="master";
+    if [ ! -z "$1" ]; then
+        BRANCH="$1"
+    fi;
+
+    git push -u origin $BRANCH
 }
 gc () {
     git commit -m "$1"
 }
 # will loop all first level directories, ga, gc and gpush in them all.
-pushall () {
+gpushall () {
     for dir in ./*; do (cd "$dir" && ga && gc "$1" && gpush); done
 }
 
@@ -35,4 +40,15 @@ alias a-ct="sudo apachectl configtest"
 # If you want a bit more control
 apache () {
     sudo apachectl $1
+}
+
+# Docker
+docker-clear () {
+    echo "Are you dure you want to delete all docker containers? (y/n, default n)";
+    read removeAll;
+
+    if [ "$removeAll" = "y" ] || [ "$removeAll" = "Y" ]; then
+        docker rm $(docker ps -q -f status=exited)
+        echo "Containers deleted."
+    fi;
 }
