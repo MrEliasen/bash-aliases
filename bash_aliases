@@ -10,6 +10,7 @@ alias shtop="sudo htop"
 alias myip="curl http://ipecho.net/plain; echo"
 alias mylocalip="ipconfig getifaddr en0"
 alias temp="macstats" # Needs: npm i macstats -g
+alias dspace="du -sh * | sort -h"
 
 # Git aliases
 alias ga="git add ."
@@ -29,7 +30,7 @@ gpushall () {
     for dir in ./*; do (cd "$dir" && ga && gc "$1" && gpush); done
 }
 
-# Apache & PHP
+# Apache & PHP (MacOS)
 alias o-php="sudo vim /private/etc/php.ini"
 alias o-vhost="sudo vim /private/etc/apache2/extra/httpd-vhosts.conf"
 alias o-httpd="sudo vim /private/etc/apache2/httpd.conf"
