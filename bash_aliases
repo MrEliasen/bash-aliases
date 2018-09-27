@@ -5,6 +5,14 @@ alias lsa="ls -lA"
 alias cd..="cd .."
 alias o-hosts="sudo vim /etc/hosts"
 alias shtop="sudo htop"
+o () {
+    LOCATION=".";
+    if [ ! -z "$1" ]; then
+        LOCATION="$1"
+    fi;
+
+    open $LOCATION
+}
 
 # Helpful bits
 alias myip="curl http://ipecho.net/plain; echo"
