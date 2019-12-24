@@ -61,3 +61,14 @@ docker-clear () {
         echo "Containers deleted."
     fi;
 }
+
+# iOS development
+alias emulators="xcrun simctl list"
+emulator-run () {
+    DEVICEID=""
+    if [ ! -z "$1" ]; then
+        DEVICEID="--args -CurrentDeviceUDID $1"
+    fi;
+
+    open -a simulator $DEVICEID
+}
