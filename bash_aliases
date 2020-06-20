@@ -73,3 +73,13 @@ emulator-run () {
 
     open -a simulator $DEVICEID
 }
+
+# NGROK
+share () {
+    PORT=8080;
+    if [ ! -z "$1" ]; then
+        PORT=$1
+    fi;
+
+    ngrok http $PORT
+}
