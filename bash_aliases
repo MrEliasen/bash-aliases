@@ -83,3 +83,6 @@ share () {
 
     ngrok http $PORT
 }
+
+# LARAVEL VAPOR
+alias vapor="php vendor/bin/vapor"
