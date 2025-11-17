@@ -1,47 +1,18 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cwd=$(pwd)
+rm -f ~/.cli_aliases
+ln -s $cwd/cli_aliases ~/.cli_aliases
 
-if ! [ -L ~/.bash_aliases ] && ! [ -f ~/.bash_aliases ]; then 
-    ln -s "$DIR/bash_aliases" ~/.bash_aliases
+if ! [ -f ~/.zshrc ]; then
+    sudo touch ~/.zshrc
+fi;
 
-    {
-        if ! [ -f ~/.bash_profile ]; then
-            sudo touch ~/.bash_profile
-        else
-            echo -e "\n\n" | sudo tee -a ~/.bash_profile
-        fi;
+if ! grep -q ". ~/.cli_aliases" ~/.zshrc; then
+    # echo -e "\n\n. ~/.cli_aliases" | sudo tee -a ~/.zshrc
+    echo -e "\n\n. ~/.cli_aliases" >> ~/.zshrc
+fi;
 
-        if ! grep -q ". ~/.bash_aliases" ~/.bash_profile; then
-            echo -e "if [ -L ~/.bash_aliases ]; then\n    . ~/.bash_aliases\nfi;" | sudo tee -a ~/.bash_profile
-        fi;
-    } &> /dev/null
- fi;
-
-     if ! [ -L ~/.bash_aliases_extras ] && ! [ -f ~/.bash_aliases_extras ]; then
-        echo "Do you want to install the 'third party' aliases? (y/n, default is no)";
-        read thirdPty;
-
-        if [ "$thirdPty" = "y" ] || [ "$thirdPty" = "Y" ]; then
-            echo "Installing 'third party' aliases."
-            ln -s "$DIR/bash_aliases_extras" ~/.bash_aliases_extras
-
-            {
-                if ! [ -f ~/.bash_profile ]; then
-                    sudo touch ~/.bash_profile
-                else
-                    echo -e "\n\n" | sudo tee -a ~/.bash_profile
-                fi;
-
-                if ! grep -q ". ~/.bash_aliases_extras" ~/.bash_profile; then
-                    echo -e "if [ -L ~/.bash_aliases_extras ]; then\n    . ~/.bash_aliases_extras\nfi;" | sudo tee -a ~/.bash_profile
-                fi;
-            } &> /dev/null
-        else
-            echo "Skipping 'third party' aliases."
-        fi;
-     fi;
-
-    # Make it take effect immediately!
-    . ~/.bash_profile
+# Make it take effect immediately!
+. ~/.zshrc
 
 # Just so I know it actual ran
 echo "- Done!"
